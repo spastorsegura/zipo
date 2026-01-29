@@ -113,7 +113,3 @@ public
 *.njsproj
 *.sln
 *.sw?
-
-# Git repositories (subprojects)
-backend/
-frontend/
