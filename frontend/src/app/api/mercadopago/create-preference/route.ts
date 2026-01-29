@@ -49,7 +49,6 @@ export async function POST(request: NextRequest) {
           failure: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/payment/failure`,
           pending: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/payment/pending`,
         },
-        auto_return: 'approved',
         notification_url: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/api/mercadopago/webhook`,
         statement_descriptor: 'Zipo Tienda Infantil',
       },
@@ -64,12 +63,11 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error creating MercadoPago preference:', error);
-    console.error('Error details:', JSON.stringify(error, null, 2));
     
     return NextResponse.json(
       { 
         error: 'Error creating payment preference',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : String(error)
       },
       { status: 500 }
     );
