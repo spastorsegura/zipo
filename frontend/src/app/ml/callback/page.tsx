@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Loader2, CheckCircle, XCircle } from 'lucide-react';
@@ -8,7 +8,7 @@ import { mercadoLibreAuth } from '@/services/mercadolibre-auth';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-export default function MercadoLibreCallback() {
+function CallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -116,5 +116,17 @@ export default function MercadoLibreCallback() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function MercadoLibreCallback() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    }>
+      <CallbackContent />
+    </Suspense>
   );
 }

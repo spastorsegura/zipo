@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const [paymentId, setPaymentId] = useState<string | null>(null);
 
@@ -117,5 +117,17 @@ export default function PaymentSuccessPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <CheckCircle className="w-8 h-8 animate-spin" />
+      </div>
+    }>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Home, RefreshCw } from 'lucide-react';
 import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
-export default function PaymentPendingPage() {
+function PaymentPendingContent() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -95,5 +95,17 @@ export default function PaymentPendingPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function PaymentPendingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <RefreshCw className="w-8 h-8 animate-spin" />
+      </div>
+    }>
+      <PaymentPendingContent />
+    </Suspense>
   );
 }

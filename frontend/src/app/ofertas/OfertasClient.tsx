@@ -43,15 +43,7 @@ export default function OfertasClient() {
   };
 
   const handleAddToCart = (product: any) => {
-    addToCart({
-      id: product.id.toString(),
-      name: product.name,
-      price: product.price,
-      quantity: 1,
-      description: product.description,
-      images: product.images,
-      category: product.category
-    });
+    addToCart(product, 1);
     toast.success(`${product.name} agregado al carrito`);
   };
 

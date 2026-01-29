@@ -127,6 +127,7 @@ export const MERCADO_PAGO_CONFIG = {
   publicKey: process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY || 'TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
   accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN || 'TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
   baseUrl: 'https://api.mercadopago.com',
+  CURRENCY_ID: 'PEN',
   PREFERENCE_CONFIG: {
     auto_return: 'approved',
     back_urls: {

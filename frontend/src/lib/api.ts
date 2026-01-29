@@ -16,19 +16,36 @@ export interface Product {
     documentId: string;
     name: string;
     url: string;
+    alternativeText?: string;
+    caption?: string;
+    width: number;
+    height: number;
     formats?: {
-      large?: { url: string };
-      medium?: { url: string };
-      small?: { url: string };
-      thumbnail?: { url: string };
+      large?: { url: string; width: number; height: number };
+      medium?: { url: string; width: number; height: number };
+      small?: { url: string; width: number; height: number };
+      thumbnail?: { url: string; width: number; height: number };
     };
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    previewUrl?: string;
+    provider: string;
+    provider_metadata?: any;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   }>;
   category: {
     id: number;
     documentId: string;
     name: string;
     slug: string;
-    description: string;
+    description?: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
 }
 

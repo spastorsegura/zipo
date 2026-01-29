@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Product } from '@/lib/api';
 import { api } from '@/lib/api';
@@ -46,8 +46,8 @@ export default function ProductosClient() {
     }
   };
 
-  const filterAndSortProducts = () => {
-    let filtered = products.filter(product => {
+  const filterAndSortProducts = useCallback(() => {
+    const filtered = products.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            product.description?.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesPrice = product.price >= priceRange.min && product.price <= priceRange.max;
@@ -69,18 +69,10 @@ export default function ProductosClient() {
     });
 
     setFilteredProducts(filtered);
-  };
+  }, [products, searchTerm, sortBy, priceRange]);
 
   const handleAddToCart = (product: Product) => {
-    addToCart({
-      id: product.id.toString(),
-      name: product.name,
-      price: product.price,
-      quantity: 1,
-      description: product.description,
-      images: product.images,
-      category: product.category
-    });
+    addToCart(product, 1);
     toast.success(`${product.name} agregado al carrito`);
   };
 
@@ -163,8 +155,7 @@ export default function ProductosClient() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2"
               style={{ 
-                borderColor: ZIPO_COLORS.gray[300],
-                focusRingColor: ZIPO_COLORS.primary
+                borderColor: ZIPO_COLORS.gray[300]
               }}
             />
           </div>
@@ -190,7 +181,7 @@ export default function ProductosClient() {
 
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
+              onChange={(e) => setSortBy(e.target.value as 'name' | 'price-asc' | 'price-desc')}
               className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2"
               style={{ borderColor: ZIPO_COLORS.gray[300] }}
             >

@@ -74,11 +74,11 @@ export class MercadoPagoService {
         }),
       };
 
-      const response = await fetch(`${MERCADO_PAGO_CONFIG.API_URL}/checkout/preferences`, {
+      const response = await fetch(`${MERCADO_PAGO_CONFIG.baseUrl}/checkout/preferences`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.ACCESS_TOKEN}`,
+          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.accessToken}`,
           'Accept': 'application/json',
         },
         body: JSON.stringify(preferenceData),
@@ -99,10 +99,10 @@ export class MercadoPagoService {
   // Obtener estado de un pago
   async getPaymentStatus(paymentId: string): Promise<any> {
     try {
-      const response = await fetch(`${MERCADO_PAGO_CONFIG.API_URL}/v1/payments/${paymentId}`, {
+      const response = await fetch(`${MERCADO_PAGO_CONFIG.baseUrl}/v1/payments/${paymentId}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.ACCESS_TOKEN}`,
+          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.accessToken}`,
           'Accept': 'application/json',
         },
       });
@@ -121,11 +121,11 @@ export class MercadoPagoService {
   // Crear pago con tarjeta (para implementación futura)
   async createCardPayment(paymentData: any): Promise<any> {
     try {
-      const response = await fetch(`${MERCADO_PAGO_CONFIG.API_URL}/v1/payments`, {
+      const response = await fetch(`${MERCADO_PAGO_CONFIG.baseUrl}/v1/payments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.ACCESS_TOKEN}`,
+          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.accessToken}`,
           'Accept': 'application/json',
         },
         body: JSON.stringify(paymentData),
@@ -146,10 +146,10 @@ export class MercadoPagoService {
   // Obtener métodos de pago disponibles
   async getPaymentMethods(): Promise<any> {
     try {
-      const response = await fetch(`${MERCADO_PAGO_CONFIG.API_URL}/v1/payment_methods`, {
+      const response = await fetch(`${MERCADO_PAGO_CONFIG.baseUrl}/v1/payment_methods`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.ACCESS_TOKEN}`,
+          'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.accessToken}`,
           'Accept': 'application/json',
         },
       });
@@ -169,11 +169,11 @@ export class MercadoPagoService {
   async getInstallments(paymentMethodId: string, amount: number): Promise<any> {
     try {
       const response = await fetch(
-        `${MERCADO_PAGO_CONFIG.API_URL}/v1/payment_methods/installments?payment_method_id=${paymentMethodId}&amount=${amount}&currency_id=${MERCADO_PAGO_CONFIG.CURRENCY_ID}`,
+        `${MERCADO_PAGO_CONFIG.baseUrl}/v1/payment_methods/installments?payment_method_id=${paymentMethodId}&amount=${amount}&currency_id=${MERCADO_PAGO_CONFIG.CURRENCY_ID}`,
         {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.ACCESS_TOKEN}`,
+            'Authorization': `Bearer ${MERCADO_PAGO_CONFIG.accessToken}`,
             'Accept': 'application/json',
           },
         }
@@ -192,7 +192,7 @@ export class MercadoPagoService {
 
   // Validar si el entorno está configurado
   isConfigured(): boolean {
-    return !!(MERCADO_PAGO_CONFIG.PUBLIC_KEY && MERCADO_PAGO_CONFIG.ACCESS_TOKEN);
+    return !!(MERCADO_PAGO_CONFIG.publicKey && MERCADO_PAGO_CONFIG.accessToken);
   }
 
   // Obtener URL de sandbox o producción
