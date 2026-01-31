@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
@@ -73,11 +74,15 @@ export default function NosotrosPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative"
               >
-                <div className="rounded-3xl h-96 flex items-center justify-center" style={{ background: ZIPO_COLORS.gradientSecondary }}>
-                  <div className="text-center">
-                    <div className="text-8xl mb-4">👨‍👩‍👧‍👦</div>
-                    <p className="font-medium" style={{ color: ZIPO_COLORS.blue }}>Familia Zipo</p>
-                  </div>
+                <div className="rounded-3xl h-96 overflow-hidden relative">
+                  <Image
+                    src="/assets/zipohistoria.webp"
+                    alt="Familia Zipo"
+                    fill
+                    className="object-cover rounded-3xl"
+                    style={{ objectPosition: 'center' }}
+                    priority
+                  />
                 </div>
               </motion.div>
             </div>
@@ -185,11 +190,17 @@ export default function NosotrosPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-center"
               >
-                <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: ZIPO_COLORS.gradientPrimary }}>
-                  <span className="text-4xl">👩‍💼</span>
+                <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden relative">
+                  <Image
+                    src="/assets/Fondo.webp"
+                    alt="Ana Martínez"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>Ana Martínez</h3>
-                <p className="mb-2" style={{ color: ZIPO_COLORS.gray[600] }}>Fundadora & CEO</p>
+                <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>Marigen</h3>
+                <p className="mb-2" style={{ color: ZIPO_COLORS.gray[600] }}>Diseñadora de moda</p>
                 <p className="text-sm" style={{ color: ZIPO_COLORS.gray[500] }}>
                   Mamá de dos y apasionada por crear experiencias mágicas para niños.
                 </p>
@@ -201,11 +212,17 @@ export default function NosotrosPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-center"
               >
-                <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: ZIPO_COLORS.gradientSecondary }}>
-                  <span className="text-4xl">👨‍🎨</span>
+                <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden relative">
+                  <Image
+                    src="/assets/sergio.webp"
+                    alt="Sergio Pastor"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>Carlos López</h3>
-                <p className="mb-2" style={{ color: ZIPO_COLORS.gray[600] }}>Director Creativo</p>
+                <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>Sergio Pastor</h3>
+                <p className="mb-2" style={{ color: ZIPO_COLORS.gray[600] }}>Creativo</p>
                 <p className="text-sm" style={{ color: ZIPO_COLORS.gray[500] }}>
                   Diseñador especializado en productos infantiles seguros y divertidos.
                 </p>
@@ -217,11 +234,17 @@ export default function NosotrosPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-center"
               >
-                <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: ZIPO_COLORS.gradientSuccess }}>
-                  <span className="text-4xl">👩‍🔬</span>
+                <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden relative">
+                  <Image
+                    src="/assets/marisa.webp"
+                    alt="Marisa Calber"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>Laura Sánchez</h3>
-                <p className="mb-2" style={{ color: ZIPO_COLORS.gray[600] }}>Directora de Calidad</p>
+                <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>Marisa Calber</h3>
+                <p className="mb-2" style={{ color: ZIPO_COLORS.gray[600] }}>Recursos humanos</p>
                 <p className="text-sm" style={{ color: ZIPO_COLORS.gray[500] }}>
                   Experta en seguridad infantil y control de calidad de productos.
                 </p>

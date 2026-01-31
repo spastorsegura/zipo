@@ -133,7 +133,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" style={{ color: ZIPO_COLORS.blue }} />
-                <span className="text-sm" style={{ color: ZIPO_COLORS.gray[600] }}>+34 900 123 456</span>
+                <span className="text-sm" style={{ color: ZIPO_COLORS.gray[600] }}>+51 976 317 906</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4" style={{ color: ZIPO_COLORS.blue }} />
@@ -181,7 +181,7 @@ const Footer = () => {
         <div className="mt-8 pt-8" style={{ borderTopColor: ZIPO_COLORS.gray[200] }}>
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm" style={{ color: ZIPO_COLORS.gray[500] }}>
-              © 2024 Zipo. Todos los derechos reservados.
+              © {new Date().getFullYear()} Zipo. Todos los derechos reservados.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link href="/privacidad" className="text-sm transition-colors" style={{ color: ZIPO_COLORS.gray[500] }} onMouseEnter={(e) => { e.currentTarget.style.color = ZIPO_COLORS.blue }} onMouseLeave={(e) => { e.currentTarget.style.color = ZIPO_COLORS.gray[500] }}>

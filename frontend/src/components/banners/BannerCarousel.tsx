@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { bannerApi, Banner } from '@/lib/api-banners';
-import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
+import { ZIPO_COLORS } from '@/lib/colors';
 import { Skeleton } from '@/components/ui/skeleton';
 
 // Banners temporales simples - solo imágenes
@@ -251,22 +251,6 @@ export default function BannerCarousel() {
               ))}
             </div>
           )}
-
-          {/* Floating Animation */}
-          <motion.div
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              boxShadow: ZIPO_CLASSES.shadowPrimary,
-            }}
-          />
         </motion.div>
       </AnimatePresence>
     </div>

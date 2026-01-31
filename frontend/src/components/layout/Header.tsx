@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ShoppingCart, Menu, X, Baby } from 'lucide-react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
@@ -14,7 +14,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { useCart } from '@/contexts/CartContext';
-import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
+import { ZIPO_COLORS } from '@/lib/colors';
 import Image from 'next/image';
 
 const Header = () => {
@@ -22,11 +22,11 @@ const Header = () => {
   const { itemCount } = useCart();
 
   const categories = [
-    { name: 'Cuentos Infantiles', href: '/categoria/cuentos-infantiles' },
-    { name: 'Ropa de Niños', href: '/categoria/ropa-ninos' },
-    { name: 'Ropa de Bebés', href: '/categoria/ropa-bebes' },
-    { name: 'Juguetes', href: '/categoria/juguetes' },
-    { name: 'Accesorios', href: '/categoria/accesorios' },
+    { name: 'Cuentos Infantiles', href: '/categoria/cuentos-infantiles', color: ZIPO_COLORS.primary },
+    { name: 'Ropa de Niños', href: '/categoria/ropa-ninos', color: ZIPO_COLORS.secondary },
+    { name: 'Ropa de Bebés', href: '/categoria/ropa-bebes', color: ZIPO_COLORS.accent },
+    { name: 'Juguetes', href: '/categoria/juguetes', color: ZIPO_COLORS.success },
+    { name: 'Accesorios', href: '/categoria/accesorios', color: ZIPO_COLORS.blue },
   ];
 
   return (
@@ -46,9 +46,9 @@ const Header = () => {
               <Image
                 src="/assets/logoZIPO.png"
                 alt="Zipo"
-                width={150}
-                height={60}
-                className="h-10 w-auto object-contain"
+                width={200}
+                height={80}
+                className="h-14 w-auto object-contain"
                 loading="eager"
                 priority
               />
@@ -75,10 +75,14 @@ const Header = () => {
                       <NavigationMenuLink key={category.name} asChild>
                         <Link
                           href={category.href}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-orange-50 focus:bg-orange-50"
-                          style={{ color: ZIPO_COLORS.text }}
+                          className="block select-none rounded-full px-4 py-2 text-center leading-none no-underline outline-none transition-all hover:scale-105 hover:shadow-md"
+                          style={{ 
+                            backgroundColor: category.color + '20',
+                            color: category.color,
+                            border: `2px solid ${category.color}`
+                          }}
                         >
-                          <div className="text-sm font-medium leading-none hover:text-orange-500 transition-colors">
+                          <div className="text-sm font-medium">
                             {category.name}
                           </div>
                         </Link>
@@ -153,13 +157,17 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3" style={{ backgroundColor: 'white' }}>
+            <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3" style={{ backgroundColor: 'white' }}>
               {categories.map((category) => (
                 <Link
                   key={category.name}
                   href={category.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium hover:bg-orange-50 transition-colors"
-                  style={{ color: ZIPO_COLORS.text }}
+                  className="block px-4 py-2 rounded-full text-base font-medium text-center transition-all hover:scale-105 hover:shadow-md"
+                  style={{ 
+                    backgroundColor: category.color + '20',
+                    color: category.color,
+                    border: `2px solid ${category.color}`
+                  }}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {category.name}

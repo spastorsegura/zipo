@@ -6,7 +6,7 @@ import ProductCard from './ProductCard';
 import ProductCardSkeleton from './ProductCardSkeleton';
 import { Product } from '@/lib/api';
 import { api } from '@/lib/api';
-import { ZIPO_CLASSES } from '@/lib/colors';
+import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
 import Link from 'next/link';
 
 const ProductGrid = () => {
@@ -33,8 +33,8 @@ const ProductGrid = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Cargando productos...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto" style={{ borderColor: ZIPO_COLORS.primary }}></div>
+            <p className="mt-4" style={{ color: ZIPO_COLORS.gray[600] }}>Cargando productos...</p>
           </div>
         </div>
       </section>
@@ -50,13 +50,13 @@ const ProductGrid = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: ZIPO_COLORS.text }}>
             Nuestros Productos
-            <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+            <span style={{ background: ZIPO_COLORS.gradientPrimary, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               {' '}Destacados
             </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: ZIPO_COLORS.gray[600] }}>
             Descubre nuestra selección especial de productos que encantarán a los más pequeños
           </p>
         </motion.div>
@@ -64,10 +64,10 @@ const ProductGrid = () => {
         {products.length === 0 ? (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🧸</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold mb-2" style={{ color: ZIPO_COLORS.text }}>
               Próximamente productos disponibles
             </h3>
-            <p className="text-gray-600">
+            <p style={{ color: ZIPO_COLORS.gray[600] }}>
               Estamos preparando los mejores productos para ti. Vuelve pronto para ver nuestras novedades.
             </p>
           </div>

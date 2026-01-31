@@ -1,6 +1,6 @@
 'use client';
 
-import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
+import { ZIPO_COLORS } from '@/lib/colors';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { api } from '@/lib/api';
@@ -138,8 +138,7 @@ export default function OfertasClient() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 relative"
-                style={{ boxShadow: ZIPO_CLASSES.shadowPrimary }}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 relative shadow-[0_4px_14px_0_rgba(255,138,31,0.15)]"
               >
                 {/* Badge de descuento */}
                 <div className="absolute top-2 left-2 z-10 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -170,7 +169,10 @@ export default function OfertasClient() {
                     {product.name}
                   </h3>
                   <p className="text-sm mb-3 line-clamp-2" style={{ color: ZIPO_COLORS.gray[600] }}>
-                    {product.description}
+                    {typeof product.description === 'string' 
+                      ? product.description 
+                      : product.description?.[0]?.children?.[0]?.text || 'Sin descripción'
+                    }
                   </p>
                   
                   {/* Price */}

@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Product } from '@/lib/api';
 import { api } from '@/lib/api';
-import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
+import { ZIPO_COLORS } from '@/lib/colors';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useCart } from '@/contexts/CartContext';
@@ -244,12 +244,11 @@ export default function ProductosClient() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 }}
-                className={
-                  viewMode === 'grid'
-                    ? 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow'
-                    : 'bg-white rounded-lg shadow-md p-4 flex gap-4 hover:shadow-lg transition-shadow'
-                }
-                style={{ boxShadow: ZIPO_CLASSES.shadowPrimary }}
+                    className={
+                      viewMode === 'grid'
+                        ? 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow shadow-[0_4px_14px_0_rgba(255,138,31,0.15)]'
+                        : 'bg-white rounded-lg shadow-md p-4 flex gap-4 hover:shadow-lg transition-shadow shadow-[0_4px_14px_0_rgba(255,138,31,0.15)]'
+                    }
               >
                 {viewMode === 'grid' ? (
                   <>
@@ -275,7 +274,10 @@ export default function ProductosClient() {
                         {product.name}
                       </h3>
                       <p className="text-sm mb-3 line-clamp-2" style={{ color: ZIPO_COLORS.gray[600] }}>
-                        {product.description}
+                        {typeof product.description === 'string' 
+                          ? product.description 
+                          : product.description?.[0]?.children?.[0]?.text || 'Sin descripción'
+                        }
                       </p>
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold" style={{ color: ZIPO_COLORS.primary }}>
@@ -315,7 +317,10 @@ export default function ProductosClient() {
                         {product.name}
                       </h3>
                       <p className="mb-3" style={{ color: ZIPO_COLORS.gray[600] }}>
-                        {product.description}
+                        {typeof product.description === 'string' 
+                          ? product.description 
+                          : product.description?.[0]?.children?.[0]?.text || 'Sin descripción'
+                        }
                       </p>
                       <div className="flex items-center justify-between">
                         <span className="text-xl font-bold" style={{ color: ZIPO_COLORS.primary }}>

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/contexts/CartContext";
 import { Toaster } from "sonner";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <CartProvider>
           {children}
+          <WhatsAppButton />
           <Toaster 
             position="bottom-right"
             expand={false}

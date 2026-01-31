@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
@@ -13,13 +13,10 @@ import { toast } from 'sonner';
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams();
-  const [paymentId, setPaymentId] = useState<string | null>(null);
+  const paymentId = searchParams.get('payment_id');
 
   useEffect(() => {
-    const payment_id = searchParams.get('payment_id');
     const external_reference = searchParams.get('external_reference');
-    
-    setPaymentId(payment_id);
     
     // Mostrar notificación de éxito con Sonner
     toast.success('¡Pago realizado con éxito!', {
@@ -28,8 +25,8 @@ function PaymentSuccessContent() {
     });
     
     // Aquí podrías verificar el estado del pago con tu backend
-    console.log('Payment successful:', { payment_id, external_reference });
-  }, [searchParams]);
+    console.log('Payment successful:', { payment_id: paymentId, external_reference });
+  }, [paymentId, searchParams]);
 
   return (
     <div className="min-h-screen bg-background">
