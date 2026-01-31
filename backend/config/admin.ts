@@ -11,7 +11,7 @@ export default ({ env }) => ({
     },
   },
   secrets: {
-    encryptionKey: env('ENCRYPTION_KEY'),
+    encryptionKey: env('API_TOKEN_ENCRYPTION_KEY') || env('ENCRYPTION_KEY'),
   },
   flags: {
     nps: env.bool('FLAG_NPS', true),
