@@ -51,6 +51,7 @@ const Header = () => {
                 className="h-14 w-auto object-contain"
                 loading="eager"
                 priority
+                unoptimized
               />
             </motion.div>
             <span className="sr-only">Zipo</span>
