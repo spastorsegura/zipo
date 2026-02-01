@@ -34,7 +34,7 @@ export default function ContactoPage() {
                       <input
                         type="text"
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2"
-                        style={{ borderColor: ZIPO_COLORS.primary, focusRingColor: ZIPO_COLORS.primary }}
+                        style={{ borderColor: ZIPO_COLORS.primary }}
                       />
                     </div>
                     <div>
@@ -44,7 +44,7 @@ export default function ContactoPage() {
                       <input
                         type="email"
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2"
-                        style={{ borderColor: ZIPO_COLORS.primary, focusRingColor: ZIPO_COLORS.primary }}
+                        style={{ borderColor: ZIPO_COLORS.primary }}
                       />
                     </div>
                     <div>
@@ -54,7 +54,7 @@ export default function ContactoPage() {
                       <textarea
                         rows={4}
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2"
-                        style={{ borderColor: ZIPO_COLORS.primary, focusRingColor: ZIPO_COLORS.primary }}
+                        style={{ borderColor: ZIPO_COLORS.primary }}
                       />
                     </div>
                     <button
