@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Baby, Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 import { ZIPO_COLORS, ZIPO_CLASSES } from '@/lib/colors';
-import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -20,7 +19,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <Image
+              <img
                 src="/assets/logoZipo.png"
                 alt="Zipo"
                 width={150}
