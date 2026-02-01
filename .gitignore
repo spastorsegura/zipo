@@ -94,7 +94,7 @@ temp/
 
 # Gatsby files
 .cache/
-public
+# public (removed - needed for frontend)
 
 # Storybook build outputs
 .out
