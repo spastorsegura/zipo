@@ -18,6 +18,7 @@ module.exports = {
       },
     ],
     formats: ['image/webp', 'image/avif'],
+    domains: ['localhost'],
   },
   async rewrites() {
     const backendUrl = process.env.API_URL || 'http://localhost:1337';

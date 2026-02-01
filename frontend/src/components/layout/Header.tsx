@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import { useCart } from '@/contexts/CartContext';
 import { ZIPO_COLORS } from '@/lib/colors';
+import Image from 'next/image';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,13 +43,14 @@ const Header = () => {
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <img
+              <Image
                 src="/assets/logoZIPO.png"
                 alt="Zipo"
                 width={200}
                 height={80}
                 className="h-14 w-auto object-contain"
                 loading="eager"
+                priority
               />
             </motion.div>
             <span className="sr-only">Zipo</span>
