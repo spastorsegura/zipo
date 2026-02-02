@@ -8,4 +8,11 @@ export default ({ env }) => ({
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', true),
   },
   url: env('PUBLIC_URL', env('URL_DEPLOY', 'http://localhost:1337')),
+  // Optimize for low memory
+  http: {
+    serverOptions: {
+      keepAliveTimeout: 65000,
+      headersTimeout: 66000,
+    },
+  },
 });
